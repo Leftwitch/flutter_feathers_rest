@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:feathers_rest/src/service/feathers_rest_service.dart';
 import 'package:flutter_feathers/flutter_feathers.dart';
+
+import '../../flutter_feathers_rest.dart';
 
 class FeathersRestProvider extends FeathersProvider {
   String feathersRestEndpoint;

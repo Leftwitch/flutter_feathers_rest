@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:feathers_rest/feathers_rest.dart';
+import 'package:feathers_rest/flutter_feathers_rest.dart';
 
 void main() {
   test('adds one to input values', () {
