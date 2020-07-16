@@ -1,14 +1,23 @@
-# feathers_rest
+![Image of Feathers](https://feathersjs.com/img/feathers-logo-wide.png)
 
-A new Flutter package project.
+# flutter_feathers_rest
 
-## Getting Started
+This library provides a `FeathersRestProvider` for the [flutter_feathers](https://github.com/Leftwitch/flutter_feathers) package which allows you to establish a connection to your Feathers.js backend using Rest
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+Getting Started
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+## Example with Rest-Provider
+
+```dart
+
+Feathers feathers = Feathers();
+
+feathers.configure(FeathersRestProvider('http://localhost:3030')); //Tells Feathers to use the FeathersRestProvider which takes an URL as parameter
+
+await user = feathers.service('users').get('eb412caa-34cd-470e-ba15-15225715e18e'); //Calls http://localhost:3030/users/eb412caa-34cd-470e-ba15-15225715e18e
+
+print(user);
+
+  
+
+```
