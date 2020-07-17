@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_feathers/flutter_feathers.dart';
 
@@ -13,26 +15,20 @@ class FeathersRestService extends FeathersService {
 
   Dio getDio() => getProvider().dio;
 
-  String getRequestUrl() =>
-      '${getProvider().feathersRestEndpoint}/$serviceName';
-
   //Implementation of FeathersService
   @override
-  Future<void> create(object) async {
-    await getDio().post(getRequestUrl(), data: object);
+  Future<dynamic> create(object) async {
+    return (await getDio().post('/$serviceName', data: object)).data;
   }
 
   @override
   Future<List> find({Map<String, String> query = const {}}) async {
-    var response =
-        await getDio().get('${getRequestUrl()}', queryParameters: query);
-    return response.data;
+    return (await getDio().get('/$serviceName', queryParameters: query)).data;
   }
 
   @override
-  Future get(String id) async {
-    var response = await getDio().get('${getRequestUrl()}/$id');
-    return response.data;
+  Future<dynamic> get(String id) async {
+    return (await getDio().get('/$serviceName/$id')).data;
   }
 
   @override
@@ -46,17 +42,17 @@ class FeathersRestService extends FeathersService {
   }
 
   @override
-  Future<void> patch(String id, object) async {
-    await getDio().patch('${getRequestUrl()}/$id', data: object);
+  Future<dynamic> patch(String id, object) async {
+    return (await getDio().patch('/$serviceName/$id', data: object)).data;
   }
 
   @override
-  Future<void> update(String id, object) async {
-    await getDio().put('${getRequestUrl()}/$id', data: object);
+  Future<dynamic> update(String id, object) async {
+    return (await getDio().put('/$serviceName/$id', data: object)).data;
   }
 
   @override
-  Future<void> remove(String id) async {
-    await getDio().delete('${getRequestUrl()}/$id');
+  Future<dynamic> remove(String id) async {
+    return (await getDio().delete('/$serviceName/$id')).data;
   }
 }
